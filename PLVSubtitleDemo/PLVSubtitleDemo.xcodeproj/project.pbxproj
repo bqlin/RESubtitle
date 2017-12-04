@@ -102,13 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				0395DCD11FD5371900290FE4 /* UI */,
-				0395DCC81FD4E43000290FE4 /* _Parser */,
+				0395DCC81FD4E43000290FE4 /* Parser */,
 			);
 			name = PLVSubtitle;
 			path = ../PLVSubtitle;
 			sourceTree = "<group>";
 		};
-		0395DCC81FD4E43000290FE4 /* _Parser */ = {
+		0395DCC81FD4E43000290FE4 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
 				0395DCCB1FD4E48C00290FE4 /* PLVSubtitleItem.h */,
@@ -116,7 +116,7 @@
 				0395DCCE1FD4EB0100290FE4 /* PLVSubtitleParser.h */,
 				0395DCCF1FD4EB0100290FE4 /* PLVSubtitleParser.m */,
 			);
-			path = _Parser;
+			path = Parser;
 			sourceTree = "<group>";
 		};
 		0395DCD11FD5371900290FE4 /* UI */ = {
