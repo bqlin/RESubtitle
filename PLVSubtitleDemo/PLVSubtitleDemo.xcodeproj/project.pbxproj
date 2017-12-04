@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03059A4B1FD59D72009B96DE /* test.srt in Resources */ = {isa = PBXBuildFile; fileRef = 03059A491FD59D72009B96DE /* test.srt */; };
+		03059A4C1FD59D72009B96DE /* double_srt.srt in Resources */ = {isa = PBXBuildFile; fileRef = 03059A4A1FD59D72009B96DE /* double_srt.srt */; };
 		0395DCB31FD4E42100290FE4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCB21FD4E42100290FE4 /* AppDelegate.m */; };
 		0395DCB61FD4E42100290FE4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCB51FD4E42100290FE4 /* ViewController.m */; };
 		0395DCB91FD4E42100290FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0395DCB71FD4E42100290FE4 /* Main.storyboard */; };
@@ -15,9 +17,13 @@
 		0395DCCA1FD4E46100290FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0395DCC91FD4E46100290FE4 /* LaunchScreen.storyboard */; };
 		0395DCCD1FD4E48C00290FE4 /* PLVSubtitleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCC1FD4E48C00290FE4 /* PLVSubtitleItem.m */; };
 		0395DCD01FD4EB0100290FE4 /* PLVSubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCF1FD4EB0100290FE4 /* PLVSubtitleParser.m */; };
+		0395DCD41FD5373700290FE4 /* PLVSubtitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD31FD5373700290FE4 /* PLVSubtitleViewModel.m */; };
+		0395DCD71FD55A9E00290FE4 /* PLVSubtitleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD61FD55A9E00290FE4 /* PLVSubtitleManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03059A491FD59D72009B96DE /* test.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.srt; sourceTree = "<group>"; };
+		03059A4A1FD59D72009B96DE /* double_srt.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = double_srt.srt; sourceTree = "<group>"; };
 		0395DCAE1FD4E42100290FE4 /* PLVSubtitleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLVSubtitleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0395DCB11FD4E42100290FE4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0395DCB21FD4E42100290FE4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -32,6 +38,10 @@
 		0395DCCC1FD4E48C00290FE4 /* PLVSubtitleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLVSubtitleItem.m; sourceTree = "<group>"; };
 		0395DCCE1FD4EB0100290FE4 /* PLVSubtitleParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLVSubtitleParser.h; sourceTree = "<group>"; };
 		0395DCCF1FD4EB0100290FE4 /* PLVSubtitleParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLVSubtitleParser.m; sourceTree = "<group>"; };
+		0395DCD21FD5373700290FE4 /* PLVSubtitleViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLVSubtitleViewModel.h; sourceTree = "<group>"; };
+		0395DCD31FD5373700290FE4 /* PLVSubtitleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLVSubtitleViewModel.m; sourceTree = "<group>"; };
+		0395DCD51FD55A9E00290FE4 /* PLVSubtitleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLVSubtitleManager.h; sourceTree = "<group>"; };
+		0395DCD61FD55A9E00290FE4 /* PLVSubtitleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLVSubtitleManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03059A481FD59C64009B96DE /* SRT */ = {
+			isa = PBXGroup;
+			children = (
+				03059A4A1FD59D72009B96DE /* double_srt.srt */,
+				03059A491FD59D72009B96DE /* test.srt */,
+			);
+			path = SRT;
+			sourceTree = "<group>";
+		};
 		0395DCA51FD4E42100290FE4 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +84,7 @@
 		0395DCB01FD4E42100290FE4 /* PLVSubtitleDemo */ = {
 			isa = PBXGroup;
 			children = (
+				03059A481FD59C64009B96DE /* SRT */,
 				0395DCB11FD4E42100290FE4 /* AppDelegate.h */,
 				0395DCB21FD4E42100290FE4 /* AppDelegate.m */,
 				0395DCB41FD4E42100290FE4 /* ViewController.h */,
@@ -81,13 +101,14 @@
 		0395DCC71FD4E43000290FE4 /* PLVSubtitle */ = {
 			isa = PBXGroup;
 			children = (
-				0395DCC81FD4E43000290FE4 /* parser */,
+				0395DCD11FD5371900290FE4 /* UI */,
+				0395DCC81FD4E43000290FE4 /* _Parser */,
 			);
 			name = PLVSubtitle;
 			path = ../PLVSubtitle;
 			sourceTree = "<group>";
 		};
-		0395DCC81FD4E43000290FE4 /* parser */ = {
+		0395DCC81FD4E43000290FE4 /* _Parser */ = {
 			isa = PBXGroup;
 			children = (
 				0395DCCB1FD4E48C00290FE4 /* PLVSubtitleItem.h */,
@@ -95,7 +116,18 @@
 				0395DCCE1FD4EB0100290FE4 /* PLVSubtitleParser.h */,
 				0395DCCF1FD4EB0100290FE4 /* PLVSubtitleParser.m */,
 			);
-			path = parser;
+			path = _Parser;
+			sourceTree = "<group>";
+		};
+		0395DCD11FD5371900290FE4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0395DCD21FD5373700290FE4 /* PLVSubtitleViewModel.h */,
+				0395DCD31FD5373700290FE4 /* PLVSubtitleViewModel.m */,
+				0395DCD51FD55A9E00290FE4 /* PLVSubtitleManager.h */,
+				0395DCD61FD55A9E00290FE4 /* PLVSubtitleManager.m */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +190,9 @@
 			files = (
 				0395DCCA1FD4E46100290FE4 /* LaunchScreen.storyboard in Resources */,
 				0395DCBB1FD4E42100290FE4 /* Assets.xcassets in Resources */,
+				03059A4C1FD59D72009B96DE /* double_srt.srt in Resources */,
 				0395DCB91FD4E42100290FE4 /* Main.storyboard in Resources */,
+				03059A4B1FD59D72009B96DE /* test.srt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +205,9 @@
 			files = (
 				0395DCB61FD4E42100290FE4 /* ViewController.m in Sources */,
 				0395DCCD1FD4E48C00290FE4 /* PLVSubtitleItem.m in Sources */,
+				0395DCD71FD55A9E00290FE4 /* PLVSubtitleManager.m in Sources */,
 				0395DCC11FD4E42100290FE4 /* main.m in Sources */,
+				0395DCD41FD5373700290FE4 /* PLVSubtitleViewModel.m in Sources */,
 				0395DCB31FD4E42100290FE4 /* AppDelegate.m in Sources */,
 				0395DCD01FD4EB0100290FE4 /* PLVSubtitleParser.m in Sources */,
 			);
@@ -300,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NNG33WM86G;
 				INFOPLIST_FILE = PLVSubtitleDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -314,6 +351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NNG33WM86G;
 				INFOPLIST_FILE = PLVSubtitleDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

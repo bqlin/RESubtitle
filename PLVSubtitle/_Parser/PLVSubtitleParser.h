@@ -11,7 +11,9 @@
 
 @interface PLVSubtitleParser : NSObject
 
-- (NSArray<PLVSubtitleItem *> *)parseSubtitle:(NSString *)content error:(NSError **)error;
+@property (nonatomic, strong, readonly) NSMutableArray<PLVSubtitleItem *> *subtitleItems;
+
++ (instancetype)parserWithSubtitle:(NSString *)content error:(NSError **)error;
 - (PLVSubtitleItem *)subtitleItemAtTime:(NSTimeInterval)time;
 
 @end

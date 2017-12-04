@@ -50,7 +50,7 @@
 
 NS_INLINE NSMutableAttributedString *HTMLString(NSString *string) {
 	static const CGFloat kDefaultFontSize = 20.0;
-	static NSString * kDefaultFontFamily = @"HelveticaNeue";
+	static NSString * kDefaultFontFamily = @"PingFangSC";
 	
 	string = [string copy];
 	

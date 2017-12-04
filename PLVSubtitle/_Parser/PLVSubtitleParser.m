@@ -51,9 +51,52 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 
 #pragma mark - public method
 
-- (NSArray<PLVSubtitleItem *> *)parseSubtitle:(NSString *)content error:(NSError *__autoreleasing *)error {
-	[self scanSubtitleItemsWithContent:content error:error];
-	return self.subtitleItems;
++ (instancetype)parserWithSubtitle:(NSString *)content error:(NSError *__autoreleasing *)error {
+	PLVSubtitleParser *parser = [[PLVSubtitleParser alloc] init];
+	[parser scanSubtitleItemsWithContent:content error:error];
+	return parser;
+}
+
+- (PLVSubtitleItem *)subtitleItemAtTime:(NSTimeInterval)time {
+	if (!self.subtitleItems.count) {
+		return nil;
+	}
+	// Finds the first PLVSubtitleItem whose startTime <= desiredTime < endTime.
+	// Requires that we ensure the subtitleItems are ordered, because we are using binary search.
+	NSUInteger *index = NULL;
+	NSUInteger subtitleItemsCount = self.subtitleItems.count;
+	
+	// 二分法查找
+	NSUInteger low = 0;
+	NSUInteger high = subtitleItemsCount - 1;
+	
+	while (low <= high) {
+		//NSLog(@"high : %lud", high);
+		NSUInteger mid = (low + high) >> 1;
+		PLVSubtitleItem *thisSub = self.subtitleItems[mid];
+		NSTimeInterval thisStartTime = PLVSubtitleTimeGetSeconds(thisSub.startTime);
+		
+		if (thisStartTime <= time) {
+			NSTimeInterval thisEndTime = PLVSubtitleTimeGetSeconds(thisSub.endTime);
+			
+			if (time < thisEndTime) {
+				// 命中
+				if (index != NULL) *index = mid;
+				return thisSub;
+			} else {
+				// Continue search in upper *half*.
+				low = mid + 1;
+			}
+		} else {
+			if (mid == 0) break;  // Nothing found.
+			// Continue search in lower *half*.
+			high = mid - 1;
+		}
+	}
+	
+	if (index != NULL) *index = NSNotFound;
+	
+	return nil;
 }
 
 #pragma mark - private method
@@ -82,7 +125,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 	}
 	
 	NSString *subTextLineSeparator = @"\n";
-	int subtitleNr = 0;
+	NSInteger subtitleNr = 0;
 	int lineNr = 1;
 	
 	NSRegularExpression *tagRe;
@@ -235,60 +278,6 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"SRT file: %@", self.subtitleItems];
-}
-
-- (PLVSubtitleItem *)subtitleItemAtTime:(NSTimeInterval)time {
-	// Finds the first PLVSubtitleItem whose startTime <= desiredTime < endTime.
-	// Requires that we ensure the subtitleItems are ordered, because we are using binary search.
-	NSUInteger *index = NULL;
-	NSUInteger subtitleItemsCount = _subtitleItems.count;
-	
-	// Custom binary search.
-	NSUInteger low = 0;
-	NSUInteger high = subtitleItemsCount - 1;
-	
-	while (low <= high) {
-		NSUInteger mid = (low + high) >> 1;
-		PLVSubtitleItem *thisSub = [_subtitleItems objectAtIndex:mid];
-		NSTimeInterval thisStartTime = PLVSubtitleTimeGetSeconds(thisSub.startTime);
-		
-		if (thisStartTime <= time) {
-			NSTimeInterval thisEndTime = PLVSubtitleTimeGetSeconds(thisSub.endTime);
-			
-			if (time < thisEndTime) {
-				// 命中
-				if (index != NULL) *index = mid;
-				return thisSub;
-			} else {
-				// Continue search in upper *half*.
-				low = mid + 1;
-			}
-		} else {
-			if (mid == 0) break;  // Nothing found.
-			// Continue search in lower *half*.
-			high = mid - 1;
-		}
-//		CMTime thisStartTime = thisSub.startTime;
-//		if (CMTIME_COMPARE_INLINE(thisStartTime, <=, desiredTime)) {
-//			CMTime thisEndTime = thisSub.endTime;
-//			if (CMTIME_COMPARE_INLINE(desiredTime, <, thisEndTime)) {
-//				// desiredTime in range.
-//				if (index != NULL) *index = mid;
-//				return thisSub;
-//			} else {
-//				// Continue search in upper *half*.
-//				low = mid + 1;
-//			}
-//		} else { /*if (CMTIME_COMPARE_INLINE(subStartTime, >, desiredTime))*/
-//			if (mid == 0) break;  // Nothing found.
-//			// Continue search in lower *half*.
-//			high = mid - 1;
-//		}
-	}
-	
-	if (index != NULL) *index = NSNotFound;
-	
-	return nil;
 }
 
 @end

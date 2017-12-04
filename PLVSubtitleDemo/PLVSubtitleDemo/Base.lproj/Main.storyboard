@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,13 +18,41 @@
                         <viewControllerLayoutGuide type="bottom" id="nZw-Ul-e2d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-Qt-z7C">
+                                <rect key="frame" x="0.0" y="416" width="320" height="64"/>
+                                <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="2ui-hH-zL1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CnK-50-UpW">
+                                <rect key="frame" x="-2" y="386" width="324" height="31"/>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="32s-Qt-z7C" firstAttribute="top" secondItem="CnK-50-UpW" secondAttribute="bottom" id="27y-J4-7sq"/>
+                            <constraint firstItem="32s-Qt-z7C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JI0-mK-RLZ"/>
+                            <constraint firstItem="CnK-50-UpW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SIg-Jn-oe6"/>
+                            <constraint firstAttribute="trailing" secondItem="CnK-50-UpW" secondAttribute="trailing" id="bcW-oz-j7b"/>
+                            <constraint firstItem="nZw-Ul-e2d" firstAttribute="top" secondItem="32s-Qt-z7C" secondAttribute="bottom" id="dGQ-tI-hvB"/>
+                            <constraint firstAttribute="trailing" secondItem="32s-Qt-z7C" secondAttribute="trailing" id="mCO-pW-Ksx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="progressSlider" destination="CnK-50-UpW" id="j5k-bp-3qF"/>
+                        <outlet property="subtitleLabel" destination="32s-Qt-z7C" id="pIw-5J-Uha"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="82.5" y="32.5"/>
         </scene>
     </scenes>
 </document>
