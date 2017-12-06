@@ -126,7 +126,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 	
 	NSString *subTextLineSeparator = @"\n";
 	NSInteger subtitleNr = 0;
-	int lineNr = 1;
+	NSInteger lineNr = 1;
 	
 	NSRegularExpression *tagRe;
 	
@@ -212,7 +212,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 		}
 		
 		if (subtitleNr != _subtitleNr) {
-			NSLog(@"Subtitle # mismatch (line %d): got %ld, expected %ld. ", lineNr, _subtitleNr, subtitleNr);
+			NSLog(@"Subtitle # mismatch (line %@): got %@, expected %@. ", @(lineNr), @(_subtitleNr), @(subtitleNr));
 			subtitleNr = _subtitleNr;
 		}
 		
