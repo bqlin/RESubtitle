@@ -37,7 +37,9 @@ static const double PLVSubtitleAnimationDuration = 0.15;
 
 - (void)setSubtitleLabel:(UILabel *)subtitleLabel {
 	_subtitleLabel = subtitleLabel;
-	[self setupSubtitleLabel:subtitleLabel];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self setupSubtitleLabel:subtitleLabel];
+	});
 }
 
 #pragma mark - private
@@ -49,6 +51,7 @@ static const double PLVSubtitleAnimationDuration = 0.15;
 }
 
 - (void)setupSubtitleLabel:(UILabel *)subtitleLabel {
+	subtitleLabel.text = @"";
 	subtitleLabel.numberOfLines = 0;
 	subtitleLabel.contentMode = UIViewContentModeBottom;
 	subtitleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
