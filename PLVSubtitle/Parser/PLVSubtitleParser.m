@@ -106,7 +106,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 	// Basis for implementation donated by Peter Ljunglöf (SubTTS)
 #   define SCAN_LINEBREAK() scanLinebreak(scanner, linebreakString, lineNr)
 #   define SCAN_STRING(str) scanString(scanner, (str))
-	
+	if (!str.length) return NO;
 	NSScanner *scanner = [NSScanner scannerWithString:str];
 	[scanner setCharactersToBeSkipped:[NSCharacterSet whitespaceCharacterSet]];
 	
