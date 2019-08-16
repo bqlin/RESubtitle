@@ -3,14 +3,14 @@
 //  PLVSubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
-//  Copyright © 2017年 POLYV. All rights reserved.
+//  Copyright © 2017年 Bq. All rights reserved.
 //
 
-#import "PLVSubtitleItem.h"
+#import "RESubtitleItem.h"
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
 
-@implementation PLVSubtitleItem
+@implementation RESubtitleItem
 
 - (instancetype)init {
 	if (self = [super init]) {

@@ -3,13 +3,13 @@
 //  PLVSubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
-//  Copyright © 2017年 POLYV. All rights reserved.
+//  Copyright © 2017年 Bq. All rights reserved.
 //
 
 #import "ViewController.h"
-//#import "PLVSubtitleParser.h"
-//#import "PLVSubtitleViewModel.h"
-#import "PLVSubtitleManager.h"
+//#import "RESubtitleParser.h"
+//#import "RESubtitleViewModel.h"
+#import "RESubtitleManager.h"
 
 @interface ViewController ()
 
@@ -18,9 +18,9 @@
 @property (nonatomic, assign) NSTimeInterval repeatInterval;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
-//@property (nonatomic, strong) PLVSubtitleParser *subtitleParser;
-//@property (nonatomic, strong) PLVSubtitleViewModel *subtitleViewModel;
-@property (nonatomic, strong) PLVSubtitleManager *subtitleManager;
+//@property (nonatomic, strong) RESubtitleParser *subtitleParser;
+//@property (nonatomic, strong) RESubtitleViewModel *subtitleViewModel;
+@property (nonatomic, strong) RESubtitleManager *subtitleManager;
 
 @end
 
@@ -42,17 +42,17 @@
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"double_srt.srt" ofType:nil];
 	NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 	NSError *error = nil;
-//	PLVSubtitleParser *parser = [PLVSubtitleParser parserWithSubtitle:content error:&error];
+//	RESubtitleParser *parser = [RESubtitleParser parserWithSubtitle:content error:&error];
 //	NSArray *subtitleItems = parser.subtitleItems;
 //	if (error) {
 //		NSLog(@"error: %@", error);
 //	}
 //	NSLog(@"subtitleItems: %@", subtitleItems);
 //	self.subtitleParser = parser;
-//	PLVSubtitleViewModel *viewModel = [[PLVSubtitleViewModel alloc] init];
+//	RESubtitleViewModel *viewModel = [[RESubtitleViewModel alloc] init];
 //	viewModel.subtitleLabel = self.subtitleLabel;
 //	self.subtitleViewModel = viewModel;
-	self.subtitleManager = [PLVSubtitleManager managerWithSubtitle:content label:self.subtitleLabel error:&error];
+	self.subtitleManager = [RESubtitleManager managerWithSubtitle:content label:self.subtitleLabel error:&error];
 	NSTimeInterval minTime = PLVSubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.firstObject.startTime);
 	NSTimeInterval maxTime = PLVSubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.lastObject.endTime);
 	self.progressSlider.minimumValue = minTime;

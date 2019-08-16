@@ -1,17 +1,17 @@
 //
-//  PLVSubtitleManager.h
+//  RESubtitleManager.h
 //  PLVSubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
-//  Copyright © 2017年 POLYV. All rights reserved.
+//  Copyright © 2017年 Bq. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "PLVSubtitleItem.h"
+#import "RESubtitleItem.h"
 
-@interface PLVSubtitleManager : NSObject
+@interface RESubtitleManager : NSObject
 
-@property (nonatomic, strong, readonly) NSMutableArray<PLVSubtitleItem *> *subtitleItems;
+@property (nonatomic, strong, readonly) NSMutableArray<RESubtitleItem *> *subtitleItems;
 
 + (instancetype)managerWithSubtitle:(NSString *)subtitle label:(UILabel *)subtitleLabel error:(NSError **)error;
 

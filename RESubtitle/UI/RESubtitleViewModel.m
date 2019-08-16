@@ -1,20 +1,20 @@
 //
-//  PLVSubtitleViewModel.m
+//  RESubtitleViewModel.m
 //  PLVSubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
-//  Copyright © 2017年 POLYV. All rights reserved.
+//  Copyright © 2017年 Bq. All rights reserved.
 //
 
-#import "PLVSubtitleViewModel.h"
+#import "RESubtitleViewModel.h"
 
 static const double PLVSubtitleAnimationDuration = 0.15;
 
-@interface PLVSubtitleViewModel ()
+@interface RESubtitleViewModel ()
 
 @end
 
-@implementation PLVSubtitleViewModel
+@implementation RESubtitleViewModel
 
 #pragma mark - dealloc & init
 
@@ -26,7 +26,7 @@ static const double PLVSubtitleAnimationDuration = 0.15;
 	[self performSelectorOnMainThread:@selector(hideSubtitleWithAnimation) withObject:nil waitUntilDone:YES];
 }
 
-- (void)setSubtitleItem:(PLVSubtitleItem *)subtitleItem {
+- (void)setSubtitleItem:(RESubtitleItem *)subtitleItem {
 	BOOL same = subtitleItem == _subtitleItem;
 	if (same) {
 		return;
@@ -59,7 +59,7 @@ static const double PLVSubtitleAnimationDuration = 0.15;
 	subtitleLabel.shadowOffset = CGSizeMake(1, 1);
 }
 
-- (void)subtitleItemDidChange:(PLVSubtitleItem *)subtitleItem {
+- (void)subtitleItemDidChange:(RESubtitleItem *)subtitleItem {
 	//NSLog(@"%@", subtitleItem);
 	[UIView transitionWithView:self.subtitleLabel duration:PLVSubtitleAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
 		self.subtitleLabel.attributedText = subtitleItem.attributedText;

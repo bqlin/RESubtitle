@@ -1,9 +1,9 @@
 //
-//  PLVSubtitleItem.h
+//  RESubtitleItem.h
 //  PLVSubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
-//  Copyright © 2017年 POLYV. All rights reserved.
+//  Copyright © 2017年 Bq. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,7 +18,7 @@ typedef struct {
 NS_INLINE NSMutableAttributedString *HTMLString(NSString *string);
 NSTimeInterval PLVSubtitleTimeGetSeconds(PLVSubtitleTime time);
 
-@interface PLVSubtitleItem : NSObject
+@interface RESubtitleItem : NSObject
 
 @property (nonatomic, assign) PLVSubtitleTime startTime;
 @property (nonatomic, assign) PLVSubtitleTime endTime;

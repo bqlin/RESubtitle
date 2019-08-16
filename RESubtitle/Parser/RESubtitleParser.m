@@ -1,14 +1,14 @@
 //
-//  PLVSubtitleParser.m
+//  RESubtitleParser.m
 //  PLVSubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
-//  Copyright © 2017年 POLYV. All rights reserved.
+//  Copyright © 2017年 Bq. All rights reserved.
 //
 
-#import "PLVSubtitleParser.h"
+#import "RESubtitleParser.h"
 
-static NSString *const PLVSubtitleErrorDomain = @"net.polyv.subtitle.error";
+static NSString *const PLVSubtitleErrorDomain = @"net.Bq.subtitle.error";
 
 //typedef NS_ENUM(NSInteger, PLVSubtitlePosition) {
 //	PLVSubtitlePositionIndex,
@@ -20,28 +20,28 @@ NS_INLINE BOOL scanLinebreak(NSScanner *scanner, NSString *linebreakString, NSIn
 NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str);
 NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 
-@interface PLVSubtitleParser ()
+@interface RESubtitleParser ()
 
-@property (nonatomic, strong) NSMutableArray<PLVSubtitleItem *> *subtitleItems;
-@property (nonatomic, strong) NSDictionary<NSNumber *, PLVSubtitleItem *> *subtitleItemsDictionary;
+@property (nonatomic, strong) NSMutableArray<RESubtitleItem *> *subtitleItems;
+@property (nonatomic, strong) NSDictionary<NSNumber *, RESubtitleItem *> *subtitleItemsDictionary;
 
 @end
 
-@implementation PLVSubtitleParser
+@implementation RESubtitleParser
 
 #pragma mark - property
 
-- (NSMutableArray<PLVSubtitleItem *> *)subtitleItems {
+- (NSMutableArray<RESubtitleItem *> *)subtitleItems {
 	if (!_subtitleItems) {
 		_subtitleItems = [NSMutableArray array];
 	}
 	return _subtitleItems;
 }
 
-- (NSDictionary<NSNumber *,PLVSubtitleItem *> *)subtitleItemsDictionary {
+- (NSDictionary<NSNumber *,RESubtitleItem *> *)subtitleItemsDictionary {
 	if (!_subtitleItemsDictionary) {
 		NSMutableDictionary *subtitleItemsDictionary = [NSMutableDictionary dictionary];
-		for (PLVSubtitleItem *item in self.subtitleItems) {
+		for (RESubtitleItem *item in self.subtitleItems) {
 			subtitleItemsDictionary[@(PLVSubtitleTimeGetSeconds(item.startTime))] = item;
 		}
 		_subtitleItemsDictionary = subtitleItemsDictionary;
@@ -52,16 +52,16 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 #pragma mark - public method
 
 + (instancetype)parserWithSubtitle:(NSString *)content error:(NSError *__autoreleasing *)error {
-	PLVSubtitleParser *parser = [[PLVSubtitleParser alloc] init];
+	RESubtitleParser *parser = [[RESubtitleParser alloc] init];
 	[parser scanSubtitleItemsWithContent:content error:error];
 	return parser;
 }
 
-- (PLVSubtitleItem *)subtitleItemAtTime:(NSTimeInterval)time {
+- (RESubtitleItem *)subtitleItemAtTime:(NSTimeInterval)time {
 	if (!self.subtitleItems.count) {
 		return nil;
 	}
-	// Finds the first PLVSubtitleItem whose startTime <= desiredTime < endTime.
+	// Finds the first RESubtitleItem whose startTime <= desiredTime < endTime.
 	// Requires that we ensure the subtitleItems are ordered, because we are using binary search.
 	NSUInteger *index = NULL;
 	NSUInteger subtitleItemsCount = self.subtitleItems.count;
@@ -73,7 +73,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 	while (low <= high) {
 		//NSLog(@"high : %lud", high);
 		NSUInteger mid = (low + high) >> 1;
-		PLVSubtitleItem *thisSub = self.subtitleItems[mid];
+		RESubtitleItem *thisSub = self.subtitleItems[mid];
 		NSTimeInterval thisStartTime = PLVSubtitleTimeGetSeconds(thisSub.startTime);
 		
 		if (thisStartTime <= time) {
@@ -262,7 +262,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 			}
 		}
 		
-		PLVSubtitleItem *item = [[PLVSubtitleItem alloc] initWithText:subText
+		RESubtitleItem *item = [[RESubtitleItem alloc] initWithText:subText
 															  start:start
 																end:end];
 		
