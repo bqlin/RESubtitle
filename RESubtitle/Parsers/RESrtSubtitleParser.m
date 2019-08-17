@@ -253,18 +253,13 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 					tagRe = [[NSRegularExpression alloc] initWithPattern:tagPattern options:0 error:error];
 				}
 				
-				[tagRe replaceMatchesInString:subTextMutable
-									  options:0
-										range:searchRange
-								 withTemplate:@""];
+				[tagRe replaceMatchesInString:subTextMutable options:0 range:searchRange withTemplate:@""];
 				
 				subText = [subTextMutable copy];
 			}
 		}
 		
-		RESubtitleItem *item = [[RESubtitleItem alloc] initWithText:subText
-															  start:start
-																end:end];
+		RESubtitleItem *item = [[RESubtitleItem alloc] initWithText:subText start:start end:end];
 		
 		[self.subtitleItems addObject:item];
 		

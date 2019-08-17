@@ -177,15 +177,21 @@ static NSString * const kTextColumn = @"Text";
 	const int endTimeIndex = (int)[formatComponents indexOfObject:@"End"];
 	const int textIndex = (int)[formatComponents indexOfObject:@"Text"];
 	const BOOL textAtEnd = textIndex == formatComponents.count - 1;
-	NSLog(@"start: %d, end: %d, text: %d", startTimeIndex, endTimeIndex, textIndex);
+	//NSLog(@"start: %d, end: %d, text: %d", startTimeIndex, endTimeIndex, textIndex);
 	
+	NSMutableArray<RESubtitleItem *> *subtitleItems = [NSMutableArray array];
 	for (RESsaSectionLineInfo *dialogue in eventSection.infos) {
 		if (![dialogue.key isEqualToString:@"Dialogue"]) continue;
 		NSArray *dialogueComponents = [self.class dialogueComponentsForDialogue:dialogue.value textIndex:textIndex textAtEnd:textAtEnd];
 		NSString *startTimeString = dialogueComponents[startTimeIndex];
 		NSString *endTimeString = dialogueComponents[endTimeIndex];
 		NSString *textString = dialogueComponents[textIndex];
-		NSLog(@"start: %@, end: %@, text: %@", startTimeString, endTimeString, textString);
+		//NSLog(@"start: %@, end: %@, text: %@", startTimeString, endTimeString, textString);
+		RESubtitleTime startTime = [self.class parseSsaTime:startTimeString];
+		RESubtitleTime endTime = [self.class parseSsaTime:endTimeString];
+		textString = [self.class removeTextStyle:textString];
+		RESubtitleItem *subtitleItem = [[RESubtitleItem alloc] initWithText:textString start:startTime end:endTime];
+		[subtitleItems addObject:subtitleItem];
 	}
 	
 	return nil;
@@ -202,6 +208,42 @@ static NSString * const kTextColumn = @"Text";
 }
 
 #pragma mark - util
+
++ (RESubtitleTime)parseSsaTime:(NSString *)ssaTimeString {
+	RESubtitleTime time;
+	NSArray<NSString *> *timeComponents = [ssaTimeString componentsSeparatedByString:@":"];
+	if (timeComponents.count == 3) {
+		time.hours = timeComponents[0].integerValue;
+		time.minutes = timeComponents[1].integerValue;
+		double seconds = timeComponents[2].doubleValue;
+		time.seconds = seconds;
+		NSInteger milliseconds = seconds * 1000.0;
+		milliseconds %= 1000;
+		time.milliseconds = milliseconds;
+	}
+	return time;
+}
+
++ (NSString *)removeTextStyle:(NSString *)text {
+	// 忽略绘图
+	NSString * const drawingRegex = @"[mnlbsp] \\d* \\d*";
+	if ([text rangeOfString:drawingRegex options:NSRegularExpressionSearch].location != NSNotFound) {
+		return @"";
+	}
+	
+	NSMutableString *newText = text.mutableCopy;
+	NSError *error = nil;
+	NSInteger matchCount = 0;
+	
+	// 去除样式
+	NSRegularExpression *styleRegex = [NSRegularExpression regularExpressionWithPattern:@"\\{.*?\\}" options:NSRegularExpressionCaseInsensitive error:&error];
+	matchCount = [styleRegex replaceMatchesInString:newText options:0 range:NSMakeRange(0, newText.length) withTemplate:@""];
+	
+	// 统一换行
+	matchCount = [newText replaceOccurrencesOfString:@"\\N" withString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, newText.length)];
+	
+	return newText;
+}
 
 + (NSArray *)dialogueComponentsForDialogue:(NSString *)dialogueString textIndex:(int)textIndex textAtEnd:(BOOL)textAtEnd {
 	if (textAtEnd) {
