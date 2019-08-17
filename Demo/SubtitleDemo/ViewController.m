@@ -39,7 +39,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	// double_srt.srt
 	//test.srt
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"double_srt.srt" ofType:nil];
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"double_srt.srt" ofType:nil inDirectory:@"Subtitles"];
 	NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 	NSError *error = nil;
 //	RESubtitleParser *parser = [RESubtitleParser parserWithSubtitle:content error:&error];

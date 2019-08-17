@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0338A2BF2307AD890027808A /* Subtitles in Resources */ = {isa = PBXBuildFile; fileRef = 0338A2BE2307AD890027808A /* Subtitles */; };
 		0395DCCD1FD4E48C00290FE4 /* RESubtitleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */; };
 		0395DCD01FD4EB0100290FE4 /* RESubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCF1FD4EB0100290FE4 /* RESubtitleParser.m */; };
 		0395DCD41FD5373700290FE4 /* RESubtitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD31FD5373700290FE4 /* RESubtitleViewModel.m */; };
@@ -14,14 +15,13 @@
 		03ADA27A230711C300E0AAF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA26D230711C300E0AAF9 /* LaunchScreen.storyboard */; };
 		03ADA27B230711C300E0AAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA26F230711C300E0AAF9 /* Assets.xcassets */; };
 		03ADA27C230711C300E0AAF9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ADA270230711C300E0AAF9 /* ViewController.m */; };
-		03ADA27D230711C300E0AAF9 /* test.srt in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA272230711C300E0AAF9 /* test.srt */; };
-		03ADA27E230711C300E0AAF9 /* double_srt.srt in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA273230711C300E0AAF9 /* double_srt.srt */; };
 		03ADA27F230711C300E0AAF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA274230711C300E0AAF9 /* Main.storyboard */; };
 		03ADA280230711C300E0AAF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ADA276230711C300E0AAF9 /* main.m */; };
 		03ADA281230711C300E0AAF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ADA277230711C300E0AAF9 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0338A2BE2307AD890027808A /* Subtitles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Subtitles; sourceTree = "<group>"; };
 		0395DCAE1FD4E42100290FE4 /* SubtitleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubtitleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0395DCCB1FD4E48C00290FE4 /* RESubtitleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleItem.h; sourceTree = "<group>"; };
 		0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleItem.m; sourceTree = "<group>"; };
@@ -35,8 +35,6 @@
 		03ADA26E230711C300E0AAF9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		03ADA26F230711C300E0AAF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03ADA270230711C300E0AAF9 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		03ADA272230711C300E0AAF9 /* test.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.srt; sourceTree = "<group>"; };
-		03ADA273230711C300E0AAF9 /* double_srt.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = double_srt.srt; sourceTree = "<group>"; };
 		03ADA275230711C300E0AAF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03ADA276230711C300E0AAF9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03ADA277230711C300E0AAF9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +56,7 @@
 		0395DCA51FD4E42100290FE4 = {
 			isa = PBXGroup;
 			children = (
+				0338A2BE2307AD890027808A /* Subtitles */,
 				0395DCC71FD4E43000290FE4 /* RESubtitle */,
 				03ADA26C230711C300E0AAF9 /* SubtitleDemo */,
 				0395DCAF1FD4E42100290FE4 /* Products */,
@@ -76,13 +75,13 @@
 			isa = PBXGroup;
 			children = (
 				0395DCD11FD5371900290FE4 /* UI */,
-				0395DCC81FD4E43000290FE4 /* Parser */,
+				0395DCC81FD4E43000290FE4 /* Parsers */,
 			);
 			name = RESubtitle;
 			path = ../RESubtitle;
 			sourceTree = "<group>";
 		};
-		0395DCC81FD4E43000290FE4 /* Parser */ = {
+		0395DCC81FD4E43000290FE4 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
 				0395DCCB1FD4E48C00290FE4 /* RESubtitleItem.h */,
@@ -90,7 +89,7 @@
 				0395DCCE1FD4EB0100290FE4 /* RESubtitleParser.h */,
 				0395DCCF1FD4EB0100290FE4 /* RESubtitleParser.m */,
 			);
-			path = Parser;
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 		0395DCD11FD5371900290FE4 /* UI */ = {
@@ -111,7 +110,6 @@
 				03ADA26E230711C300E0AAF9 /* AppDelegate.h */,
 				03ADA26F230711C300E0AAF9 /* Assets.xcassets */,
 				03ADA270230711C300E0AAF9 /* ViewController.m */,
-				03ADA271230711C300E0AAF9 /* SRT */,
 				03ADA274230711C300E0AAF9 /* Main.storyboard */,
 				03ADA276230711C300E0AAF9 /* main.m */,
 				03ADA277230711C300E0AAF9 /* AppDelegate.m */,
@@ -119,15 +117,6 @@
 				03ADA279230711C300E0AAF9 /* ViewController.h */,
 			);
 			path = SubtitleDemo;
-			sourceTree = "<group>";
-		};
-		03ADA271230711C300E0AAF9 /* SRT */ = {
-			isa = PBXGroup;
-			children = (
-				03ADA272230711C300E0AAF9 /* test.srt */,
-				03ADA273230711C300E0AAF9 /* double_srt.srt */,
-			);
-			path = SRT;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +177,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03ADA27E230711C300E0AAF9 /* double_srt.srt in Resources */,
+				0338A2BF2307AD890027808A /* Subtitles in Resources */,
 				03ADA27F230711C300E0AAF9 /* Main.storyboard in Resources */,
 				03ADA27B230711C300E0AAF9 /* Assets.xcassets in Resources */,
 				03ADA27A230711C300E0AAF9 /* LaunchScreen.storyboard in Resources */,
-				03ADA27D230711C300E0AAF9 /* test.srt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
