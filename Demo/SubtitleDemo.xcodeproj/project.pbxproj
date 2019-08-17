@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0338A2BF2307AD890027808A /* Subtitles in Resources */ = {isa = PBXBuildFile; fileRef = 0338A2BE2307AD890027808A /* Subtitles */; };
 		0395DCCD1FD4E48C00290FE4 /* RESubtitleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */; };
-		0395DCD01FD4EB0100290FE4 /* RESubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCF1FD4EB0100290FE4 /* RESubtitleParser.m */; };
+		0395DCD01FD4EB0100290FE4 /* RESrtSubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCF1FD4EB0100290FE4 /* RESrtSubtitleParser.m */; };
 		0395DCD41FD5373700290FE4 /* RESubtitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD31FD5373700290FE4 /* RESubtitleViewModel.m */; };
 		0395DCD71FD55A9E00290FE4 /* RESubtitleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD61FD55A9E00290FE4 /* RESubtitleManager.m */; };
 		03ADA27A230711C300E0AAF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA26D230711C300E0AAF9 /* LaunchScreen.storyboard */; };
@@ -25,8 +25,8 @@
 		0395DCAE1FD4E42100290FE4 /* SubtitleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubtitleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0395DCCB1FD4E48C00290FE4 /* RESubtitleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleItem.h; sourceTree = "<group>"; };
 		0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleItem.m; sourceTree = "<group>"; };
-		0395DCCE1FD4EB0100290FE4 /* RESubtitleParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleParser.h; sourceTree = "<group>"; };
-		0395DCCF1FD4EB0100290FE4 /* RESubtitleParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleParser.m; sourceTree = "<group>"; };
+		0395DCCE1FD4EB0100290FE4 /* RESrtSubtitleParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESrtSubtitleParser.h; sourceTree = "<group>"; };
+		0395DCCF1FD4EB0100290FE4 /* RESrtSubtitleParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESrtSubtitleParser.m; sourceTree = "<group>"; };
 		0395DCD21FD5373700290FE4 /* RESubtitleViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleViewModel.h; sourceTree = "<group>"; };
 		0395DCD31FD5373700290FE4 /* RESubtitleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleViewModel.m; sourceTree = "<group>"; };
 		0395DCD51FD55A9E00290FE4 /* RESubtitleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleManager.h; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 			children = (
 				0395DCCB1FD4E48C00290FE4 /* RESubtitleItem.h */,
 				0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */,
-				0395DCCE1FD4EB0100290FE4 /* RESubtitleParser.h */,
-				0395DCCF1FD4EB0100290FE4 /* RESubtitleParser.m */,
+				0395DCCE1FD4EB0100290FE4 /* RESrtSubtitleParser.h */,
+				0395DCCF1FD4EB0100290FE4 /* RESrtSubtitleParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 				0395DCCD1FD4E48C00290FE4 /* RESubtitleItem.m in Sources */,
 				0395DCD71FD55A9E00290FE4 /* RESubtitleManager.m in Sources */,
 				0395DCD41FD5373700290FE4 /* RESubtitleViewModel.m in Sources */,
-				0395DCD01FD4EB0100290FE4 /* RESubtitleParser.m in Sources */,
+				0395DCD01FD4EB0100290FE4 /* RESrtSubtitleParser.m in Sources */,
 				03ADA280230711C300E0AAF9 /* main.m in Sources */,
 				03ADA27C230711C300E0AAF9 /* ViewController.m in Sources */,
 				03ADA281230711C300E0AAF9 /* AppDelegate.m in Sources */,

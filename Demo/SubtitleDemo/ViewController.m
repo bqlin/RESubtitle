@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-//#import "RESubtitleParser.h"
+//#import "RESrtSubtitleParser.h"
 //#import "RESubtitleViewModel.h"
 #import "RESubtitleManager.h"
 
@@ -18,7 +18,7 @@
 @property (nonatomic, assign) NSTimeInterval repeatInterval;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
-//@property (nonatomic, strong) RESubtitleParser *subtitleParser;
+//@property (nonatomic, strong) RESrtSubtitleParser *subtitleParser;
 //@property (nonatomic, strong) RESubtitleViewModel *subtitleViewModel;
 @property (nonatomic, strong) RESubtitleManager *subtitleManager;
 
@@ -42,7 +42,7 @@
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"double_srt.srt" ofType:nil inDirectory:@"Subtitles"];
 	NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 	NSError *error = nil;
-//	RESubtitleParser *parser = [RESubtitleParser parserWithSubtitle:content error:&error];
+//	RESrtSubtitleParser *parser = [RESrtSubtitleParser parserWithSubtitle:content error:&error];
 //	NSArray *subtitleItems = parser.subtitleItems;
 //	if (error) {
 //		NSLog(@"error: %@", error);

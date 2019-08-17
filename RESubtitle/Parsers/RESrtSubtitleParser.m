@@ -1,12 +1,12 @@
 //
-//  RESubtitleParser.m
+//  RESrtSubtitleParser.m
 //  SubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
 //  Copyright © 2017年 Bq. All rights reserved.
 //
 
-#import "RESubtitleParser.h"
+#import "RESrtSubtitleParser.h"
 
 static NSString *const RESubtitleErrorDomain = @"net.Bq.subtitle.error";
 
@@ -20,14 +20,14 @@ NS_INLINE BOOL scanLinebreak(NSScanner *scanner, NSString *linebreakString, NSIn
 NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str);
 NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 
-@interface RESubtitleParser ()
+@interface RESrtSubtitleParser ()
 
 @property (nonatomic, strong) NSMutableArray<RESubtitleItem *> *subtitleItems;
 @property (nonatomic, strong) NSDictionary<NSNumber *, RESubtitleItem *> *subtitleItemsDictionary;
 
 @end
 
-@implementation RESubtitleParser
+@implementation RESrtSubtitleParser
 
 #pragma mark - property
 
@@ -52,7 +52,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 #pragma mark - public method
 
 + (instancetype)parserWithSubtitle:(NSString *)content error:(NSError *__autoreleasing *)error {
-	RESubtitleParser *parser = [[RESubtitleParser alloc] init];
+	RESrtSubtitleParser *parser = [[RESrtSubtitleParser alloc] init];
 	[parser scanSubtitleItemsWithContent:content error:error];
 	return parser;
 }

@@ -1,5 +1,5 @@
 //
-//  RESubtitleParser.h
+//  RESrtSubtitleParser.h
 //  SubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RESubtitleItem.h"
 
-@interface RESubtitleParser : NSObject
+@interface RESrtSubtitleParser : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableArray<RESubtitleItem *> *subtitleItems;
 

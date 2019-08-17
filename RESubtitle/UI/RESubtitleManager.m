@@ -7,12 +7,12 @@
 //
 
 #import "RESubtitleManager.h"
-#import "RESubtitleParser.h"
+#import "RESrtSubtitleParser.h"
 #import "RESubtitleViewModel.h"
 
 @interface RESubtitleManager ()
 
-@property (nonatomic, strong) RESubtitleParser *parser;
+@property (nonatomic, strong) RESrtSubtitleParser *parser;
 @property (nonatomic, strong) RESubtitleViewModel *viewModel;
 
 @end
@@ -32,7 +32,7 @@
 
 + (instancetype)managerWithSubtitle:(NSString *)subtitle label:(UILabel *)subtitleLabel error:(NSError **)error {
 	RESubtitleManager *manager = [[RESubtitleManager alloc] init];
-	manager.parser = [RESubtitleParser parserWithSubtitle:subtitle error:error];
+	manager.parser = [RESrtSubtitleParser parserWithSubtitle:subtitle error:error];
 	manager.viewModel.subtitleLabel = subtitleLabel;
 	return manager;
 }
