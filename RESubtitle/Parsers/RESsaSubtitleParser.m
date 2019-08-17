@@ -38,6 +38,9 @@ static NSString * const kTextColumn = @"Text";
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSArray<RESsaSectionLineInfo *> *infos;
 
+- (NSString *)infoValueForKey:(NSString *)key;
+- (RESsaSectionLineInfo *)infoForKey:(NSString *)key;
+
 + (instancetype)sectionWithName:(NSString *)name;
 
 @end
@@ -50,6 +53,19 @@ static NSString * const kTextColumn = @"Text";
 	return section;
 }
 
+- (NSString *)infoValueForKey:(NSString *)key {
+	return [self infoForKey:key].value;
+}
+
+- (RESsaSectionLineInfo *)infoForKey:(NSString *)key {
+	for (RESsaSectionLineInfo *info in _infos) {
+		if ([key isEqualToString:info.key]) {
+			return info;
+		}
+	}
+	return nil;
+}
+
 @end
 
 #pragma mark ---
@@ -57,6 +73,7 @@ static NSString * const kTextColumn = @"Text";
 @interface RESsaSubtitleParser ()
 
 @property (nonatomic, strong) NSString *fileContent;
+@property (nonatomic, strong) NSArray<RESsaSection *> *sections;
 
 @end
 
@@ -134,15 +151,7 @@ static NSString * const kTextColumn = @"Text";
 			continue;
 		}
 		
-		infoComponents = ({
-			NSMutableArray *strings = [NSMutableArray array];
-			for (NSString *string in infoComponents) {
-				NSString *newString = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-				[strings addObject:newString];
-			}
-			
-			strings;
-		});
+		infoComponents = [self.class trimmingStrings:infoComponents];
 		RESsaSectionLineInfo *info = [RESsaSectionLineInfo new];
 		info.key = infoComponents[0];
 		info.value = infoComponents[1];
@@ -150,11 +159,91 @@ static NSString * const kTextColumn = @"Text";
 		[sectionInfos addObject:info];
 	}
 	saveSection();
+	_sections = sections.copy;
 	
 	NSLog(@"lines: %@", @(contentLines.count));
 	NSLog(@"sections: %@", sections);
 	
+	RESsaSection *eventSection = [self sectionForKey:@"[Events]"];
+	if (!eventSection) {
+		NSLog(@"无法找到 %@", kEventLine);
+		return nil;
+	}
+	
+	NSString *formatValue = [eventSection infoValueForKey:@"Format"];
+	NSArray *formatComponents = [formatValue componentsSeparatedByString:@","];
+	formatComponents = [self.class trimmingStrings:formatComponents];
+	const int startTimeIndex = (int)[formatComponents indexOfObject:@"Start"];
+	const int endTimeIndex = (int)[formatComponents indexOfObject:@"End"];
+	const int textIndex = (int)[formatComponents indexOfObject:@"Text"];
+	const BOOL textAtEnd = textIndex == formatComponents.count - 1;
+	NSLog(@"start: %d, end: %d, text: %d", startTimeIndex, endTimeIndex, textIndex);
+	
+	for (RESsaSectionLineInfo *dialogue in eventSection.infos) {
+		if (![dialogue.key isEqualToString:@"Dialogue"]) continue;
+		NSArray *dialogueComponents = [self.class dialogueComponentsForDialogue:dialogue.value textIndex:textIndex textAtEnd:textAtEnd];
+		NSString *startTimeString = dialogueComponents[startTimeIndex];
+		NSString *endTimeString = dialogueComponents[endTimeIndex];
+		NSString *textString = dialogueComponents[textIndex];
+		NSLog(@"start: %@, end: %@, text: %@", startTimeString, endTimeString, textString);
+	}
+	
 	return nil;
+}
+
+- (RESsaSection *)sectionForKey:(NSString *)key {
+	for (RESsaSection *section in _sections) {
+		if ([section.name isEqualToString:key]) {
+			return section;
+			break;
+		}
+	}
+	return nil;
+}
+
+#pragma mark - util
+
++ (NSArray *)dialogueComponentsForDialogue:(NSString *)dialogueString textIndex:(int)textIndex textAtEnd:(BOOL)textAtEnd {
+	if (textAtEnd) {
+		NSString *dialogue = dialogueString.copy;
+		int indexCount = 0;
+		NSMutableArray *dialogueComponents = [NSMutableArray array];
+		while (true) {
+			if (indexCount < textIndex) {
+				NSRange separatorRange = [dialogue rangeOfString:kSeparator];
+				if (separatorRange.location == NSNotFound) {
+					break;
+				}
+				NSString *dialogueComponent = [dialogue substringToIndex:separatorRange.location];
+				[dialogueComponents addObject:dialogueComponent];
+				
+				dialogue = [dialogue substringFromIndex:separatorRange.location + separatorRange.length];
+				dialogue = [dialogue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+			} else {
+				[dialogueComponents addObject:dialogue];
+				break;
+			}
+			
+			indexCount++;
+		}
+		
+		dialogueComponents = [self.class trimmingStrings:dialogueComponents];
+		return dialogueComponents;
+	} else {
+		NSArray *dialogueComponents = [dialogueString componentsSeparatedByString:kSeparator];
+		dialogueComponents = [self.class trimmingStrings:dialogueComponents];
+		return dialogueComponents;
+	}
+}
+
++ (NSMutableArray *)trimmingStrings:(NSArray *)strings {
+	NSMutableArray *newStrings = [NSMutableArray array];
+	for (NSString *string in strings) {
+		NSString *newString = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+		[newStrings addObject:newString];
+	}
+	
+	return newStrings;
 }
 
 @end
