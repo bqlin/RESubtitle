@@ -7,6 +7,7 @@
 //
 
 #import "RESubtitleViewModel.h"
+#import "RESubtitleItem+RichText.h"
 
 static const double RESubtitleAnimationDuration = 0.15;
 

@@ -12,6 +12,16 @@
 		0395DCD01FD4EB0100290FE4 /* RESrtSubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCF1FD4EB0100290FE4 /* RESrtSubtitleParser.m */; };
 		0395DCD41FD5373700290FE4 /* RESubtitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD31FD5373700290FE4 /* RESubtitleViewModel.m */; };
 		0395DCD71FD55A9E00290FE4 /* RESubtitleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD61FD55A9E00290FE4 /* RESubtitleManager.m */; };
+		03AC206F2307B0B500D9E2E8 /* RESubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AC206E2307B0B500D9E2E8 /* RESubtitleParser.m */; };
+		03AC20722307B13F00D9E2E8 /* RESsaSubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AC20712307B13F00D9E2E8 /* RESsaSubtitleParser.m */; };
+		03AC207A2307B62100D9E2E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AC20792307B62100D9E2E8 /* main.m */; };
+		03AC20802307B7A000D9E2E8 /* Subtitles in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0338A2BE2307AD890027808A /* Subtitles */; };
+		03AC20832307BB6300D9E2E8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03AC20822307BB6200D9E2E8 /* README.md */; };
+		03AC20862307EA0F00D9E2E8 /* RESubtitleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */; };
+		03AC20882307EA0F00D9E2E8 /* RESrtSubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCF1FD4EB0100290FE4 /* RESrtSubtitleParser.m */; };
+		03AC208A2307EA0F00D9E2E8 /* RESubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AC206E2307B0B500D9E2E8 /* RESubtitleParser.m */; };
+		03AC208C2307EA0F00D9E2E8 /* RESsaSubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AC20712307B13F00D9E2E8 /* RESsaSubtitleParser.m */; };
+		03AC208F2307EDBF00D9E2E8 /* RESubtitleItem+RichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AC208E2307EDBF00D9E2E8 /* RESubtitleItem+RichText.m */; };
 		03ADA27A230711C300E0AAF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA26D230711C300E0AAF9 /* LaunchScreen.storyboard */; };
 		03ADA27B230711C300E0AAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03ADA26F230711C300E0AAF9 /* Assets.xcassets */; };
 		03ADA27C230711C300E0AAF9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ADA270230711C300E0AAF9 /* ViewController.m */; };
@@ -19,6 +29,19 @@
 		03ADA280230711C300E0AAF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ADA276230711C300E0AAF9 /* main.m */; };
 		03ADA281230711C300E0AAF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ADA277230711C300E0AAF9 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		03AC20752307B62000D9E2E8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				03AC20802307B7A000D9E2E8 /* Subtitles in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0338A2BE2307AD890027808A /* Subtitles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Subtitles; sourceTree = "<group>"; };
@@ -31,6 +54,16 @@
 		0395DCD31FD5373700290FE4 /* RESubtitleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleViewModel.m; sourceTree = "<group>"; };
 		0395DCD51FD55A9E00290FE4 /* RESubtitleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleManager.h; sourceTree = "<group>"; };
 		0395DCD61FD55A9E00290FE4 /* RESubtitleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleManager.m; sourceTree = "<group>"; };
+		03AC206D2307B0B500D9E2E8 /* RESubtitleParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleParser.h; sourceTree = "<group>"; };
+		03AC206E2307B0B500D9E2E8 /* RESubtitleParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleParser.m; sourceTree = "<group>"; };
+		03AC20702307B13F00D9E2E8 /* RESsaSubtitleParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESsaSubtitleParser.h; sourceTree = "<group>"; };
+		03AC20712307B13F00D9E2E8 /* RESsaSubtitleParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESsaSubtitleParser.m; sourceTree = "<group>"; };
+		03AC20772307B62000D9E2E8 /* ParserDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ParserDemo; sourceTree = BUILT_PRODUCTS_DIR; };
+		03AC20792307B62100D9E2E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		03AC20822307BB6200D9E2E8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		03AC20842307BBD500D9E2E8 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = TODO.md; path = ../TODO.md; sourceTree = "<group>"; };
+		03AC208D2307EDBF00D9E2E8 /* RESubtitleItem+RichText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RESubtitleItem+RichText.h"; sourceTree = "<group>"; };
+		03AC208E2307EDBF00D9E2E8 /* RESubtitleItem+RichText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RESubtitleItem+RichText.m"; sourceTree = "<group>"; };
 		03ADA26D230711C300E0AAF9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03ADA26E230711C300E0AAF9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		03ADA26F230711C300E0AAF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,15 +83,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03AC20742307B62000D9E2E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0395DCA51FD4E42100290FE4 = {
 			isa = PBXGroup;
 			children = (
+				03AC20822307BB6200D9E2E8 /* README.md */,
+				03AC20842307BBD500D9E2E8 /* TODO.md */,
 				0338A2BE2307AD890027808A /* Subtitles */,
 				0395DCC71FD4E43000290FE4 /* RESubtitle */,
 				03ADA26C230711C300E0AAF9 /* SubtitleDemo */,
+				03AC20782307B62100D9E2E8 /* ParserDemo */,
 				0395DCAF1FD4E42100290FE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				0395DCAE1FD4E42100290FE4 /* SubtitleDemo.app */,
+				03AC20772307B62000D9E2E8 /* ParserDemo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,6 +132,10 @@
 				0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */,
 				0395DCCE1FD4EB0100290FE4 /* RESrtSubtitleParser.h */,
 				0395DCCF1FD4EB0100290FE4 /* RESrtSubtitleParser.m */,
+				03AC206D2307B0B500D9E2E8 /* RESubtitleParser.h */,
+				03AC206E2307B0B500D9E2E8 /* RESubtitleParser.m */,
+				03AC20702307B13F00D9E2E8 /* RESsaSubtitleParser.h */,
+				03AC20712307B13F00D9E2E8 /* RESsaSubtitleParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -99,22 +147,32 @@
 				0395DCD31FD5373700290FE4 /* RESubtitleViewModel.m */,
 				0395DCD51FD55A9E00290FE4 /* RESubtitleManager.h */,
 				0395DCD61FD55A9E00290FE4 /* RESubtitleManager.m */,
+				03AC208D2307EDBF00D9E2E8 /* RESubtitleItem+RichText.h */,
+				03AC208E2307EDBF00D9E2E8 /* RESubtitleItem+RichText.m */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		03AC20782307B62100D9E2E8 /* ParserDemo */ = {
+			isa = PBXGroup;
+			children = (
+				03AC20792307B62100D9E2E8 /* main.m */,
+			);
+			path = ParserDemo;
 			sourceTree = "<group>";
 		};
 		03ADA26C230711C300E0AAF9 /* SubtitleDemo */ = {
 			isa = PBXGroup;
 			children = (
-				03ADA26D230711C300E0AAF9 /* LaunchScreen.storyboard */,
 				03ADA26E230711C300E0AAF9 /* AppDelegate.h */,
-				03ADA26F230711C300E0AAF9 /* Assets.xcassets */,
-				03ADA270230711C300E0AAF9 /* ViewController.m */,
-				03ADA274230711C300E0AAF9 /* Main.storyboard */,
-				03ADA276230711C300E0AAF9 /* main.m */,
 				03ADA277230711C300E0AAF9 /* AppDelegate.m */,
+				03ADA26F230711C300E0AAF9 /* Assets.xcassets */,
 				03ADA278230711C300E0AAF9 /* Info.plist */,
+				03ADA26D230711C300E0AAF9 /* LaunchScreen.storyboard */,
+				03ADA276230711C300E0AAF9 /* main.m */,
+				03ADA274230711C300E0AAF9 /* Main.storyboard */,
 				03ADA279230711C300E0AAF9 /* ViewController.h */,
+				03ADA270230711C300E0AAF9 /* ViewController.m */,
 			);
 			path = SubtitleDemo;
 			sourceTree = "<group>";
@@ -139,17 +197,39 @@
 			productReference = 0395DCAE1FD4E42100290FE4 /* SubtitleDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		03AC20762307B62000D9E2E8 /* ParserDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03AC207B2307B62100D9E2E8 /* Build configuration list for PBXNativeTarget "ParserDemo" */;
+			buildPhases = (
+				03AC20732307B62000D9E2E8 /* Sources */,
+				03AC20742307B62000D9E2E8 /* Frameworks */,
+				03AC20752307B62000D9E2E8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ParserDemo;
+			productName = ParserDemo;
+			productReference = 03AC20772307B62000D9E2E8 /* ParserDemo */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0395DCA61FD4E42100290FE4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = RE;
 				LastUpgradeCheck = 0910;
-				ORGANIZATIONNAME = POLYV;
+				ORGANIZATIONNAME = RTE;
 				TargetAttributes = {
 					0395DCAD1FD4E42100290FE4 = {
 						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					03AC20762307B62000D9E2E8 = {
+						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -168,6 +248,7 @@
 			projectRoot = "";
 			targets = (
 				0395DCAD1FD4E42100290FE4 /* SubtitleDemo */,
+				03AC20762307B62000D9E2E8 /* ParserDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -179,6 +260,7 @@
 			files = (
 				0338A2BF2307AD890027808A /* Subtitles in Resources */,
 				03ADA27F230711C300E0AAF9 /* Main.storyboard in Resources */,
+				03AC20832307BB6300D9E2E8 /* README.md in Resources */,
 				03ADA27B230711C300E0AAF9 /* Assets.xcassets in Resources */,
 				03ADA27A230711C300E0AAF9 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -194,10 +276,25 @@
 				0395DCCD1FD4E48C00290FE4 /* RESubtitleItem.m in Sources */,
 				0395DCD71FD55A9E00290FE4 /* RESubtitleManager.m in Sources */,
 				0395DCD41FD5373700290FE4 /* RESubtitleViewModel.m in Sources */,
+				03AC20722307B13F00D9E2E8 /* RESsaSubtitleParser.m in Sources */,
 				0395DCD01FD4EB0100290FE4 /* RESrtSubtitleParser.m in Sources */,
 				03ADA280230711C300E0AAF9 /* main.m in Sources */,
+				03AC206F2307B0B500D9E2E8 /* RESubtitleParser.m in Sources */,
 				03ADA27C230711C300E0AAF9 /* ViewController.m in Sources */,
+				03AC208F2307EDBF00D9E2E8 /* RESubtitleItem+RichText.m in Sources */,
 				03ADA281230711C300E0AAF9 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03AC20732307B62000D9E2E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03AC20862307EA0F00D9E2E8 /* RESubtitleItem.m in Sources */,
+				03AC20882307EA0F00D9E2E8 /* RESrtSubtitleParser.m in Sources */,
+				03AC208A2307EA0F00D9E2E8 /* RESubtitleParser.m in Sources */,
+				03AC208C2307EA0F00D9E2E8 /* RESsaSubtitleParser.m in Sources */,
+				03AC207A2307B62100D9E2E8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +446,36 @@
 			};
 			name = Release;
 		};
+		03AC207C2307B62100D9E2E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		03AC207D2307B62100D9E2E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -366,6 +493,15 @@
 			buildConfigurations = (
 				0395DCC51FD4E42100290FE4 /* Debug */,
 				0395DCC61FD4E42100290FE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03AC207B2307B62100D9E2E8 /* Build configuration list for PBXNativeTarget "ParserDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03AC207C2307B62100D9E2E8 /* Debug */,
+				03AC207D2307B62100D9E2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

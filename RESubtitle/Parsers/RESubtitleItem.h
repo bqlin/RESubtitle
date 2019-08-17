@@ -24,7 +24,6 @@ NSTimeInterval RESubtitleTimeGetSeconds(RESubtitleTime time);
 @property (nonatomic, assign) RESubtitleTime endTime;
 
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSAttributedString *attributedText;
 
 @property (nonatomic, assign) NSString *identifier;
 
