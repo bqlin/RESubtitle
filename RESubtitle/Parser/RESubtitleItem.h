@@ -1,6 +1,6 @@
 //
 //  RESubtitleItem.h
-//  PLVSubtitleDemo
+//  SubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
 //  Copyright © 2017年 Bq. All rights reserved.
@@ -13,21 +13,21 @@ typedef struct {
 	NSInteger minutes;
 	NSInteger seconds;
 	NSInteger milliseconds;
-} PLVSubtitleTime;
+} RESubtitleTime;
 
 NS_INLINE NSMutableAttributedString *HTMLString(NSString *string);
-NSTimeInterval PLVSubtitleTimeGetSeconds(PLVSubtitleTime time);
+NSTimeInterval RESubtitleTimeGetSeconds(RESubtitleTime time);
 
 @interface RESubtitleItem : NSObject
 
-@property (nonatomic, assign) PLVSubtitleTime startTime;
-@property (nonatomic, assign) PLVSubtitleTime endTime;
+@property (nonatomic, assign) RESubtitleTime startTime;
+@property (nonatomic, assign) RESubtitleTime endTime;
 
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSAttributedString *attributedText;
 
 @property (nonatomic, assign) NSString *identifier;
 
-- (instancetype)initWithText:(NSString *)text start:(PLVSubtitleTime)startTime end:(PLVSubtitleTime)endTime;
+- (instancetype)initWithText:(NSString *)text start:(RESubtitleTime)startTime end:(RESubtitleTime)endTime;
 
 @end

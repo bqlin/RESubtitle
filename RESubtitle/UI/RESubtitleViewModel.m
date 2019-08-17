@@ -1,6 +1,6 @@
 //
 //  RESubtitleViewModel.m
-//  PLVSubtitleDemo
+//  SubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
 //  Copyright © 2017年 Bq. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "RESubtitleViewModel.h"
 
-static const double PLVSubtitleAnimationDuration = 0.15;
+static const double RESubtitleAnimationDuration = 0.15;
 
 @interface RESubtitleViewModel ()
 
@@ -45,7 +45,7 @@ static const double PLVSubtitleAnimationDuration = 0.15;
 #pragma mark - private
 
 - (void)hideSubtitleWithAnimation {
-	[UIView animateWithDuration:PLVSubtitleAnimationDuration animations:^{
+	[UIView animateWithDuration:RESubtitleAnimationDuration animations:^{
 		self.subtitleLabel.alpha = self.enable ? 1.0 : 0;
 	}];
 }
@@ -61,7 +61,7 @@ static const double PLVSubtitleAnimationDuration = 0.15;
 
 - (void)subtitleItemDidChange:(RESubtitleItem *)subtitleItem {
 	//NSLog(@"%@", subtitleItem);
-	[UIView transitionWithView:self.subtitleLabel duration:PLVSubtitleAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+	[UIView transitionWithView:self.subtitleLabel duration:RESubtitleAnimationDuration options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
 		self.subtitleLabel.attributedText = subtitleItem.attributedText;
 	} completion:^(BOOL finished) {
 		

@@ -1,6 +1,6 @@
 //
 //  RESubtitleParser.m
-//  PLVSubtitleDemo
+//  SubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
 //  Copyright © 2017年 Bq. All rights reserved.
@@ -8,12 +8,12 @@
 
 #import "RESubtitleParser.h"
 
-static NSString *const PLVSubtitleErrorDomain = @"net.Bq.subtitle.error";
+static NSString *const RESubtitleErrorDomain = @"net.Bq.subtitle.error";
 
-//typedef NS_ENUM(NSInteger, PLVSubtitlePosition) {
-//	PLVSubtitlePositionIndex,
-//	PLVSubtitlePositionTimes,
-//	PLVSubtitlePositionText
+//typedef NS_ENUM(NSInteger, RESubtitlePosition) {
+//	RESubtitlePositionIndex,
+//	RESubtitlePositionTimes,
+//	RESubtitlePositionText
 //};
 
 NS_INLINE BOOL scanLinebreak(NSScanner *scanner, NSString *linebreakString, NSInteger linenr);
@@ -42,7 +42,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 	if (!_subtitleItemsDictionary) {
 		NSMutableDictionary *subtitleItemsDictionary = [NSMutableDictionary dictionary];
 		for (RESubtitleItem *item in self.subtitleItems) {
-			subtitleItemsDictionary[@(PLVSubtitleTimeGetSeconds(item.startTime))] = item;
+			subtitleItemsDictionary[@(RESubtitleTimeGetSeconds(item.startTime))] = item;
 		}
 		_subtitleItemsDictionary = subtitleItemsDictionary;
 	}
@@ -74,10 +74,10 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 		//NSLog(@"high : %lud", high);
 		NSUInteger mid = (low + high) >> 1;
 		RESubtitleItem *thisSub = self.subtitleItems[mid];
-		NSTimeInterval thisStartTime = PLVSubtitleTimeGetSeconds(thisSub.startTime);
+		NSTimeInterval thisStartTime = RESubtitleTimeGetSeconds(thisSub.startTime);
 		
 		if (thisStartTime <= time) {
-			NSTimeInterval thisEndTime = PLVSubtitleTimeGetSeconds(thisSub.endTime);
+			NSTimeInterval thisEndTime = RESubtitleTimeGetSeconds(thisSub.endTime);
 			
 			if (time < thisEndTime) {
 				// 命中
@@ -137,8 +137,8 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 		NSString *subText;
 		NSMutableArray *subTextLines;
 		NSString *subTextLine;
-		PLVSubtitleTime start = { -1, -1, -1, -1 };
-		PLVSubtitleTime end = { -1, -1, -1, -1 };
+		RESubtitleTime start = { -1, -1, -1, -1 };
+		RESubtitleTime end = { -1, -1, -1, -1 };
 		NSInteger _subtitleNr;
 		
 		subtitleNr++;
@@ -200,7 +200,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText);
 				NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:
 											 errorDescription, NSLocalizedDescriptionKey,
 											 nil];
-				*error = [NSError errorWithDomain:PLVSubtitleErrorDomain
+				*error = [NSError errorWithDomain:RESubtitleErrorDomain
 											code:-1
 										userInfo:errorDetail];
 				if (*error) {

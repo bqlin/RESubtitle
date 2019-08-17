@@ -1,6 +1,6 @@
 //
-//  PLVSubtitleItem.m
-//  PLVSubtitleDemo
+//  RESubtitleItem.m
+//  SubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
 //  Copyright © 2017年 Bq. All rights reserved.
@@ -19,7 +19,7 @@
 	return self;
 }
 
-- (instancetype)initWithText:(NSString *)text start:(PLVSubtitleTime)startTime end:(PLVSubtitleTime)endTime {
+- (instancetype)initWithText:(NSString *)text start:(RESubtitleTime)startTime end:(RESubtitleTime)endTime {
 	self = [self init];
 	_text = text;
 	_startTime = startTime;
@@ -38,8 +38,8 @@
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"%02f --> %02f : %@",
-			PLVSubtitleTimeGetSeconds(self.startTime),
-			PLVSubtitleTimeGetSeconds(self.endTime),
+			RESubtitleTimeGetSeconds(self.startTime),
+			RESubtitleTimeGetSeconds(self.endTime),
 			self.text];
 }
 
@@ -125,7 +125,7 @@ NS_INLINE NSMutableAttributedString *HTMLString(NSString *string) {
 	return HTMLString;
 }
 
-NSTimeInterval PLVSubtitleTimeGetSeconds(PLVSubtitleTime time) {
+NSTimeInterval RESubtitleTimeGetSeconds(RESubtitleTime time) {
 	NSTimeInterval seconds = 1.0*time.milliseconds/1000 + time.seconds + 60.0*time.minutes + 3600.0*time.hours;
 	return seconds;;
 }

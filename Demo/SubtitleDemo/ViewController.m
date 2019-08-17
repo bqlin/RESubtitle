@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  PLVSubtitleDemo
+//  SubtitleDemo
 //
 //  Created by Bq Lin on 2017/12/4.
 //  Copyright © 2017年 Bq. All rights reserved.
@@ -53,8 +53,8 @@
 //	viewModel.subtitleLabel = self.subtitleLabel;
 //	self.subtitleViewModel = viewModel;
 	self.subtitleManager = [RESubtitleManager managerWithSubtitle:content label:self.subtitleLabel error:&error];
-	NSTimeInterval minTime = PLVSubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.firstObject.startTime);
-	NSTimeInterval maxTime = PLVSubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.lastObject.endTime);
+	NSTimeInterval minTime = RESubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.firstObject.startTime);
+	NSTimeInterval maxTime = RESubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.lastObject.endTime);
 	self.progressSlider.minimumValue = minTime;
 	self.progressSlider.maximumValue = maxTime;
 	self.progressSlider.value = minTime;
@@ -79,7 +79,7 @@
 	self.time += self.repeatInterval;
 //	NSLog(@"time: %f", self.time);
 //	NSLog(@"%s - %@", __FUNCTION__, [NSThread currentThread]);
-//	PLVSubtitleItem *subtitleItem = [self.subtitleParser subtitleItemAtTime:self.time];
+//	RESubtitleItem *subtitleItem = [self.subtitleParser subtitleItemAtTime:self.time];
 //	self.subtitleViewModel.subtitleItem = subtitleItem;
 	[self.subtitleManager showSubtitleWithTime:self.time];
 }
