@@ -10,9 +10,6 @@
 
 static NSString * const kEventLine = @"[Events]";
 static NSString * const kSeparator = @",";
-static NSString * const kStartColumn = @"Start";
-static NSString * const kEndColumn = @"End";
-static NSString * const kTextColumn = @"Text";
 
 @interface RESsaSectionLineInfo : NSObject
 
@@ -72,15 +69,14 @@ static NSString * const kTextColumn = @"Text";
 
 @interface RESsaSubtitleParser ()
 
-@property (nonatomic, strong) NSString *fileContent;
 @property (nonatomic, strong) NSArray<RESsaSection *> *sections;
+@property (nonatomic, strong) NSArray<RESubtitleItem *> *subtitleItems;
 
 @end
 
 @implementation RESsaSubtitleParser
 
 - (NSArray *)parseWithFileContent:(NSString *)fileContent error:(NSError *__autoreleasing *)error {
-	_fileContent = fileContent;
 	NSMutableCharacterSet *newlineCharacterSet = [NSCharacterSet newlineCharacterSet].mutableCopy;
 	[newlineCharacterSet addCharactersInString:@"\r\n"];
 	NSArray *contentLines = [fileContent componentsSeparatedByCharactersInSet:newlineCharacterSet];
@@ -161,8 +157,8 @@ static NSString * const kTextColumn = @"Text";
 	saveSection();
 	_sections = sections.copy;
 	
-	NSLog(@"lines: %@", @(contentLines.count));
-	NSLog(@"sections: %@", sections);
+	//NSLog(@"lines: %@", @(contentLines.count));
+	//NSLog(@"sections: %@", sections);
 	
 	RESsaSection *eventSection = [self sectionForKey:@"[Events]"];
 	if (!eventSection) {
@@ -190,11 +186,13 @@ static NSString * const kTextColumn = @"Text";
 		RESubtitleTime startTime = [self.class parseSsaTime:startTimeString];
 		RESubtitleTime endTime = [self.class parseSsaTime:endTimeString];
 		textString = [self.class removeTextStyle:textString];
+		if (!textString.length) continue;
 		RESubtitleItem *subtitleItem = [[RESubtitleItem alloc] initWithText:textString start:startTime end:endTime];
 		[subtitleItems addObject:subtitleItem];
 	}
 	
-	return nil;
+	_subtitleItems = subtitleItems;
+	return subtitleItems;
 }
 
 - (RESsaSection *)sectionForKey:(NSString *)key {

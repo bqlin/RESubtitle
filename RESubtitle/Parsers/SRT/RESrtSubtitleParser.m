@@ -50,7 +50,6 @@ convertSubViewerLineBreaks(NSString *currentText) {
 @interface RESrtSubtitleParser ()
 
 @property (nonatomic, strong) NSArray<RESubtitleItem *> *subtitleItems;
-@property (nonatomic, strong) NSDictionary<NSNumber *, RESubtitleItem *> *subtitleItemsDictionary;
 
 @end
 
@@ -173,6 +172,15 @@ convertSubViewerLineBreaks(NSString *currentText) {
 			   (SCAN_LINEBREAK() || scanner.atEnd))
 			[subTextLines addObject:subTextLine];
 		
+		// 清除空行
+		subTextLines = ({
+			NSMutableArray *strings = [NSMutableArray array];
+			for (NSString *string in subTextLines) {
+				if (string.length == 0) continue;
+				[strings addObject:string];
+			}
+			strings;
+		});
 		if (subTextLines.count == 1) {
 			subText = subTextLines[0];
 			subText = [subText stringByReplacingOccurrencesOfString:@"|" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, subText.length)];
