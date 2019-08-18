@@ -12,7 +12,7 @@
 
 @interface RESubtitleDisplayManager ()
 
-@property (nonatomic, strong) __kindof RESubtitleParser *parser;
+@property (nonatomic, strong) __kindof RESubtitleParser *subtitleParser;
 @property (nonatomic, strong) RESubtitleViewModel *viewModel;
 
 @end
@@ -22,21 +22,25 @@
 - (RESubtitleViewModel *)viewModel {
 	if (!_viewModel) {
 		_viewModel = [[RESubtitleViewModel alloc] init];
+		_viewModel.subtitleLabel = _subtitleLabel;
 	}
 	return _viewModel;
 }
 
 + (instancetype)managerWithParser:(RESubtitleParser *)subtitleParser attachToLabel:(UILabel *)subtitleLabel {
-	RESubtitleDisplayManager *manager = [RESubtitleDisplayManager new];
-	manager->_parser = subtitleParser;
-	manager->_subtitleLabel = subtitleLabel;
-	manager.viewModel.subtitleLabel = subtitleLabel;
-	
-	return manager;
+	return [[RESubtitleDisplayManager alloc] initWithParser:subtitleParser attachToLabel:subtitleLabel];
+}
+
+- (instancetype)initWithParser:(RESubtitleParser *)subtitleParser attachToLabel:(UILabel *)subtitleLabel {
+	if (self = [super init]) {
+		_subtitleParser = subtitleParser;
+		_subtitleLabel = subtitleLabel;
+	}
+	return self;
 }
 
 - (void)showSubtitleWithTime:(NSTimeInterval)time {
-	RESubtitleItem *subtitleItem = [self.parser subtitleItemAtTime:time];
+	RESubtitleItem *subtitleItem = [self.subtitleParser subtitleItemAtTime:time];
 	self.viewModel.subtitleItem = subtitleItem;
 }
 

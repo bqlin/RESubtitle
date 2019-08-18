@@ -8,17 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "RESsaSubtitleParser.h"
+#import "RESrtSubtitleParser.h"
 
 void parseAss() {
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"test.ass" ofType:nil inDirectory:@"Subtitles"];
 	NSString *fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 	//NSLog(@"fileConent: %@", fileContent);
+	NSError *error = [NSError new];
 	RESsaSubtitleParser *parser = [RESsaSubtitleParser new];
-	[parser parseWithFileContent:fileContent error:nil];
+	[parser parseWithFileContent:fileContent error:NULL];
 }
 
 void parseSrt() {
-	
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"double_srt.srt" ofType:nil inDirectory:@"Subtitles"];
+	NSString *fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+	RESrtSubtitleParser *parser = [RESrtSubtitleParser new];
+	[parser parseWithFileContent:fileContent error:NULL];
+	NSLog(@"parser: %@", parser);
 }
 
 void testNSString() {
@@ -29,10 +35,9 @@ void testNSString() {
 
 int main(int argc, const char * argv[]) {
 	@autoreleasepool {
-	    // insert code here...
-		parseAss();
-		
 		//testNSString();
+		//parseAss();
+		parseSrt();
 	}
 	return 0;
 }

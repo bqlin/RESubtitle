@@ -16,17 +16,20 @@ static NSString *const RESubtitleErrorDomain = @"net.RTE.subtitle.error";
 //	RESubtitlePositionText
 //};
 
-NS_INLINE BOOL scanLinebreak(NSScanner *scanner, NSString *linebreakString, NSInteger linenr) {
+NS_INLINE BOOL
+scanLinebreak(NSScanner *scanner, NSString *linebreakString, NSInteger linenr) {
 	BOOL success = ([scanner scanString:linebreakString intoString:NULL] && (++linenr >= 0));
 	return success;
 }
 
-NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
+NS_INLINE BOOL
+scanString(NSScanner *scanner, NSString *str) {
 	BOOL success = [scanner scanString:str intoString:NULL];
 	return success;
 }
 
-NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
+NS_INLINE NSString *
+convertSubViewerLineBreaks(NSString *currentText) {
 	NSUInteger currentTextLength = currentText.length;
 	
 	if (currentTextLength == 0) return currentText;
@@ -57,10 +60,10 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
 	// Should handle mal-formed SRT files. May fill error even if parsing was successful!
 	// Basis for implementation donated by Peter Ljunglöf (SubTTS)
 #   define SCAN_LINEBREAK() scanLinebreak(scanner, linebreakString, lineNr)
-#   define SCAN_STRING(str) scanString(scanner, (fileContent))
+#   define SCAN_STRING(fileContent) scanString(scanner, (fileContent))
 	if (!fileContent.length) return nil;
 	NSScanner *scanner = [NSScanner scannerWithString:fileContent];
-	[scanner setCharactersToBeSkipped:[NSCharacterSet whitespaceCharacterSet]];
+	scanner.charactersToBeSkipped = [NSCharacterSet whitespaceCharacterSet];
 	
 	// 检测换行符
 	NSString *linebreakString = nil;
@@ -72,7 +75,7 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
 			linebreakString = @"\n";
 		}
 		// 维护变量
-		[scanner setScanLocation:0];
+		scanner.scanLocation = 0;
 	}
 	
 	NSString *subTextLineSeparator = @"\n";
@@ -85,11 +88,12 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
 	while (SCAN_LINEBREAK());
 	
 	NSMutableArray *subtitleItems = [NSMutableArray array];
-	while (![scanner isAtEnd]) {
+	while (!scanner.atEnd) {
 		NSString *subText;
 		NSMutableArray *subTextLines;
 		NSString *subTextLine;
-		RESubtitleTime start = RESubtitleTimeZero, end = RESubtitleTimeZero;
+		RESubtitleTime start = { -1, -1, -1, -1 };
+		RESubtitleTime end = { -1, -1, -1, -1 };
 		NSInteger _subtitleNr;
 		
 		subtitleNr++;
@@ -128,14 +132,14 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
 		 
 		 // 结束一条字幕
 		 (
-		  SCAN_LINEBREAK() || [scanner isAtEnd])
+		  SCAN_LINEBREAK() || scanner.atEnd)
 		 );
 		
 		if (!available) {
-			if (*error != NULL) {
+			if (error != NULL) {
 				const NSUInteger contextLength = 20;
 				NSUInteger strLength = fileContent.length;
-				NSUInteger errorLocation = [scanner scanLocation];
+				NSUInteger errorLocation = scanner.scanLocation;
 				
 				NSRange beforeRange, afterRange;
 				
@@ -148,13 +152,11 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
 				NSString *afterError = [fileContent substringWithRange:afterRange];
 				
 				NSString *errorDescription = [NSString stringWithFormat:NSLocalizedString(@"The SRT subtitles could not be parsed: error in subtitle #%d (line %d):\n%@<HERE>%@", @"Cannot parse SRT file"), subtitleNr, lineNr, beforeError, afterError];
-				NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys: errorDescription, NSLocalizedDescriptionKey, nil];
+				NSDictionary *errorDetail = @{NSLocalizedDescriptionKey: errorDescription};
 				*error = [NSError errorWithDomain:RESubtitleErrorDomain code:-1 userInfo:errorDetail];
-				if (*error) {
-					NSLog(@"scaner error: %@", *error);
-				}
+				NSLog(@"scaner error: %@", *error);
 			}
-			
+		
 			return nil;
 		}
 		
@@ -168,11 +170,11 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
 		
 		// Accumulate multi-line text if any.
 		while ([scanner scanUpToString:linebreakString intoString:&subTextLine] &&
-			   (SCAN_LINEBREAK() || [scanner isAtEnd]))
+			   (SCAN_LINEBREAK() || scanner.atEnd))
 			[subTextLines addObject:subTextLine];
 		
 		if (subTextLines.count == 1) {
-			subText = [subTextLines objectAtIndex:0];
+			subText = subTextLines[0];
 			subText = [subText stringByReplacingOccurrencesOfString:@"|" withString:@"\n" options:NSLiteralSearch range:NSMakeRange(0, subText.length)];
 		} else {
 			subText = [subTextLines componentsJoinedByString:subTextLineSeparator];

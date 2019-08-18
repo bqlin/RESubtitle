@@ -16,7 +16,7 @@ NS_INLINE NSMutableAttributedString *HTMLString(NSString *string) {
 	
 	string = [string copy];
 	
-	if ([string length] > 0) {
+	if (string.length > 0) {
 		if ([[string substringToIndex:1] isEqualToString:@"\n"]) {
 			string = [string substringFromIndex:1];
 		}
@@ -27,7 +27,7 @@ NS_INLINE NSMutableAttributedString *HTMLString(NSString *string) {
 	if ([string rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch].location != NSNotFound) {
 		NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
 		HTMLString =  [[NSMutableAttributedString alloc] initWithData:[string dataUsingEncoding:NSUTF16StringEncoding] options:options documentAttributes:nil error:NULL];
-		HTMLStringRange = NSMakeRange(0, [HTMLString.string length]);
+		HTMLStringRange = NSMakeRange(0, (HTMLString.string).length);
 		
 		//Edit font size
 		[HTMLString beginEditing];
@@ -64,7 +64,7 @@ NS_INLINE NSMutableAttributedString *HTMLString(NSString *string) {
 		  NSFontAttributeName: defaultFont
 		  };
 		HTMLString = [[NSMutableAttributedString alloc] initWithString:string attributes:attributes];
-		HTMLStringRange = NSMakeRange(0, [HTMLString.string length]);
+		HTMLStringRange = NSMakeRange(0, (HTMLString.string).length);
 	}
 	
 	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
