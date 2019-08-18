@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0338A2BF2307AD890027808A /* Subtitles in Resources */ = {isa = PBXBuildFile; fileRef = 0338A2BE2307AD890027808A /* Subtitles */; };
+		0378E596230904A700ED6B48 /* TableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0378E595230904A700ED6B48 /* TableViewAdapter.m */; };
+		0378E599230908DC00ED6B48 /* SubtitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0378E598230908DC00ED6B48 /* SubtitleTableViewCell.m */; };
 		0395DCCD1FD4E48C00290FE4 /* RESubtitleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */; };
 		0395DCD01FD4EB0100290FE4 /* RESrtSubtitleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCCF1FD4EB0100290FE4 /* RESrtSubtitleParser.m */; };
 		0395DCD41FD5373700290FE4 /* RESubtitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0395DCD31FD5373700290FE4 /* RESubtitleViewModel.m */; };
@@ -45,6 +47,10 @@
 
 /* Begin PBXFileReference section */
 		0338A2BE2307AD890027808A /* Subtitles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Subtitles; sourceTree = "<group>"; };
+		0378E594230904A700ED6B48 /* TableViewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewAdapter.h; sourceTree = "<group>"; };
+		0378E595230904A700ED6B48 /* TableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewAdapter.m; sourceTree = "<group>"; };
+		0378E597230908DC00ED6B48 /* SubtitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubtitleTableViewCell.h; sourceTree = "<group>"; };
+		0378E598230908DC00ED6B48 /* SubtitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubtitleTableViewCell.m; sourceTree = "<group>"; };
 		0395DCAE1FD4E42100290FE4 /* SubtitleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubtitleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0395DCCB1FD4E48C00290FE4 /* RESubtitleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESubtitleItem.h; sourceTree = "<group>"; };
 		0395DCCC1FD4E48C00290FE4 /* RESubtitleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RESubtitleItem.m; sourceTree = "<group>"; };
@@ -189,6 +195,10 @@
 				03ADA274230711C300E0AAF9 /* Main.storyboard */,
 				03ADA279230711C300E0AAF9 /* ViewController.h */,
 				03ADA270230711C300E0AAF9 /* ViewController.m */,
+				0378E594230904A700ED6B48 /* TableViewAdapter.h */,
+				0378E595230904A700ED6B48 /* TableViewAdapter.m */,
+				0378E597230908DC00ED6B48 /* SubtitleTableViewCell.h */,
+				0378E598230908DC00ED6B48 /* SubtitleTableViewCell.m */,
 			);
 			path = SubtitleDemo;
 			sourceTree = "<group>";
@@ -292,7 +302,9 @@
 				0395DCCD1FD4E48C00290FE4 /* RESubtitleItem.m in Sources */,
 				0395DCD71FD55A9E00290FE4 /* RESubtitleDisplayManager.m in Sources */,
 				0395DCD41FD5373700290FE4 /* RESubtitleViewModel.m in Sources */,
+				0378E596230904A700ED6B48 /* TableViewAdapter.m in Sources */,
 				03AC20722307B13F00D9E2E8 /* RESsaSubtitleParser.m in Sources */,
+				0378E599230908DC00ED6B48 /* SubtitleTableViewCell.m in Sources */,
 				0395DCD01FD4EB0100290FE4 /* RESrtSubtitleParser.m in Sources */,
 				03ADA280230711C300E0AAF9 /* main.m in Sources */,
 				03AC206F2307B0B500D9E2E8 /* RESubtitleParser.m in Sources */,
