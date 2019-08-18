@@ -14,6 +14,7 @@ typedef struct {
 	NSInteger seconds;
 	NSInteger milliseconds;
 } RESubtitleTime;
+static const RESubtitleTime RESubtitleTimeZero = {0, 0, 0, 0};
 
 NS_INLINE NSMutableAttributedString *HTMLString(NSString *string);
 NSTimeInterval RESubtitleTimeGetSeconds(RESubtitleTime time);

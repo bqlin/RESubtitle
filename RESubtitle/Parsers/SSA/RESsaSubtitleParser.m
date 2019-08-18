@@ -79,7 +79,7 @@ static NSString * const kTextColumn = @"Text";
 
 @implementation RESsaSubtitleParser
 
-- (NSArray *)praseWithFileContent:(NSString *)fileContent error:(NSError *__autoreleasing *)error {
+- (NSArray *)parseWithFileContent:(NSString *)fileContent error:(NSError *__autoreleasing *)error {
 	_fileContent = fileContent;
 	NSMutableCharacterSet *newlineCharacterSet = [NSCharacterSet newlineCharacterSet].mutableCopy;
 	[newlineCharacterSet addCharactersInString:@"\r\n"];
@@ -210,7 +210,7 @@ static NSString * const kTextColumn = @"Text";
 #pragma mark - util
 
 + (RESubtitleTime)parseSsaTime:(NSString *)ssaTimeString {
-	RESubtitleTime time;
+	RESubtitleTime time = RESubtitleTimeZero;
 	NSArray<NSString *> *timeComponents = [ssaTimeString componentsSeparatedByString:@":"];
 	if (timeComponents.count == 3) {
 		time.hours = timeComponents[0].integerValue;

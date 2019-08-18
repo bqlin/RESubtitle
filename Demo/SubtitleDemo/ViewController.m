@@ -7,9 +7,8 @@
 //
 
 #import "ViewController.h"
-//#import "RESrtSubtitleParser.h"
-//#import "RESubtitleViewModel.h"
-#import "RESubtitleManager.h"
+#import "RESrtSubtitleParser.h"
+#import "RESubtitleDisplayManager.h"
 
 @interface ViewController ()
 
@@ -18,9 +17,7 @@
 @property (nonatomic, assign) NSTimeInterval repeatInterval;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
-//@property (nonatomic, strong) RESrtSubtitleParser *subtitleParser;
-//@property (nonatomic, strong) RESubtitleViewModel *subtitleViewModel;
-@property (nonatomic, strong) RESubtitleManager *subtitleManager;
+@property (nonatomic, strong) RESubtitleDisplayManager *subtitleManager;
 
 @end
 
@@ -42,19 +39,15 @@
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"double_srt.srt" ofType:nil inDirectory:@"Subtitles"];
 	NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 	NSError *error = nil;
-//	RESrtSubtitleParser *parser = [RESrtSubtitleParser parserWithSubtitle:content error:&error];
-//	NSArray *subtitleItems = parser.subtitleItems;
-//	if (error) {
-//		NSLog(@"error: %@", error);
-//	}
-//	NSLog(@"subtitleItems: %@", subtitleItems);
-//	self.subtitleParser = parser;
-//	RESubtitleViewModel *viewModel = [[RESubtitleViewModel alloc] init];
-//	viewModel.subtitleLabel = self.subtitleLabel;
-//	self.subtitleViewModel = viewModel;
-	self.subtitleManager = [RESubtitleManager managerWithSubtitle:content label:self.subtitleLabel error:&error];
-	NSTimeInterval minTime = RESubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.firstObject.startTime);
-	NSTimeInterval maxTime = RESubtitleTimeGetSeconds(self.subtitleManager.subtitleItems.lastObject.endTime);
+	RESrtSubtitleParser *srtParser = [RESrtSubtitleParser new];
+	[srtParser parseWithFileContent:content error:&error];
+	if (error) {
+		NSLog(@"error: %@", error);
+	}
+	
+	self.subtitleManager = [RESubtitleDisplayManager managerWithParser:srtParser attachToLabel:self.subtitleLabel];
+	NSTimeInterval minTime = RESubtitleTimeGetSeconds(self.subtitleManager.subtitleParser.subtitleItems.firstObject.startTime);
+	NSTimeInterval maxTime = RESubtitleTimeGetSeconds(self.subtitleManager.subtitleParser.subtitleItems.lastObject.endTime);
 	self.progressSlider.minimumValue = minTime;
 	self.progressSlider.maximumValue = maxTime;
 	self.progressSlider.value = minTime;

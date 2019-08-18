@@ -11,7 +11,11 @@
 
 @protocol RESubtitleParser <NSObject>
 
-- (NSArray *)praseWithFileContent:(NSString *)fileContent error:(NSError **)error;
+- (NSArray<RESubtitleItem *> *)subtitleItems;
+
+- (NSArray<RESubtitleItem *> *)parseWithFileContent:(NSString *)fileContent error:(NSError **)error;
+
+- (RESubtitleItem *)subtitleItemAtTime:(NSTimeInterval)time;
 
 @end
 

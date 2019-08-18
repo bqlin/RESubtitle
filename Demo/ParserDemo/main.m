@@ -14,7 +14,11 @@ void parseAss() {
 	NSString *fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 	//NSLog(@"fileConent: %@", fileContent);
 	RESsaSubtitleParser *parser = [RESsaSubtitleParser new];
-	[parser praseWithFileContent:fileContent error:nil];
+	[parser parseWithFileContent:fileContent error:nil];
+}
+
+void parseSrt() {
+	
 }
 
 void testNSString() {
